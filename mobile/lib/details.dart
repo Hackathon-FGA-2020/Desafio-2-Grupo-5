@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mobile/donations.dart';
 
 class Details extends StatefulWidget {
   @override
@@ -19,55 +20,24 @@ class _DetailsState extends State<Details> {
     return displaySize(context).width;
   }
 
-  Widget Title() {
-    return (Row(
-      children: <Widget>[
-        Padding(padding: EdgeInsets.only(top: 60.0)),
-        Text(
-          'Bem-vindo!',
-          textAlign: TextAlign.center,
-          style: new TextStyle(
-            fontSize: 32.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-      ],
-    ));
-  }
-
   Widget TotalCases() {
     return (Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(padding: EdgeInsets.only(top: 100.0)),
-        Text(
-          'Total de 43 casos',
-          textAlign: TextAlign.right,
-          style: new TextStyle(
-              fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.grey),
-        ),
-      ],
-    ));
-  }
-
-  Widget SubTitle() {
-    return (Row(
-      children: <Widget>[
-        Padding(padding: EdgeInsets.only(bottom: 100)),
-        Container(
-          width: displayWidth(context) * 0.8,
-          child: Text(
-            'Escolha um dos casos abaixo e salve o dia.',
-            textAlign: TextAlign.left,
-            style: new TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey,
-            ),
-          ),
-        ),
+         new GestureDetector(
+                  onTap: () {
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(builder: (context) => Donations()),
+                    );
+                  },
+                  child:
+        Icon(
+          Icons.arrow_back,
+          color: Colors.red,
+        ),)
       ],
     ));
   }
@@ -85,7 +55,7 @@ class _DetailsState extends State<Details> {
             ),
             padding: EdgeInsets.only(top: 30.0, left: 24.0),
             width: displayWidth(context) * 0.85,
-            height: displayHeight(context) * 0.3,
+            height: displayHeight(context) * 0.7,
             child: Column(
               children: <Widget>[
                 Row(
@@ -144,6 +114,36 @@ class _DetailsState extends State<Details> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
+                        'Descrição:',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      )
+                    ]),
+                Padding(padding: EdgeInsets.only(top: 24.0)),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                          width: displayWidth(context) * 0.7,
+                          child: Text(
+                            'A cadelinha jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.',
+                            textAlign: TextAlign.left,
+                            style: new TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ))
+                    ]),
+                Padding(padding: EdgeInsets.only(top: 24.0)),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
                         'Valor',
                         textAlign: TextAlign.left,
                         style: new TextStyle(
@@ -161,28 +161,93 @@ class _DetailsState extends State<Details> {
                         'RS 120,00 reais',
                         textAlign: TextAlign.left,
                         style: new TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey
-                        ),
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey),
                       )
                     ]),
-                Padding(padding: EdgeInsets.only(top: 50.0)),
+                Padding(padding: EdgeInsets.only(top: 64.0)),
                 Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Ver mais detalhes',
+                        'Salve o dia!',
                         textAlign: TextAlign.left,
                         style: new TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red,
-                        ),
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      )
+                    ]),
+                Padding(padding: EdgeInsets.only(top: 5.0)),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Seja o herói desse caso.',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      )
+                    ]),
+                Padding(padding: EdgeInsets.only(top: 16.0)),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Entre em contato:',
+                        textAlign: TextAlign.left,
+                        style: new TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.grey),
+                      )
+                    ]),
+                Padding(padding: EdgeInsets.only(top: 16.0)),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      ButtonTheme(
+                        minWidth: 130.0,
+                        height: 30.0,
+                        child: FlatButton(
+                             shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
+                            padding: EdgeInsets.all(20.0),
+                            color: Colors.red,
+                            onPressed: () {
+                              /*...*/
+                            },
+                            child: Text(
+                              'E-mail',
+                              textAlign: TextAlign.left,
+                              style: new TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white),
+                            )),
                       ),
-                         Padding(
-                        padding: EdgeInsets.only(left: 100.0),
-                        child: Icon(Icons.arrow_forward, color: Colors.red,)
+                      Padding(padding: EdgeInsets.only(left: 17.0)),
+                      ButtonTheme(
+                        minWidth: 130.0,
+                        height: 30.0,
+                        child: FlatButton(
+                            padding: EdgeInsets.all(20.0),
+                            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
+                            color: Colors.red,
+                            onPressed: () {
+                              /*...*/
+                            },
+                            child: Text(
+                              'WhatsApp',
+                              textAlign: TextAlign.left,
+                              style: new TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white),
+                            )),
                       ),
                     ]),
               ],
@@ -194,21 +259,16 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  statusBarColor: Colors.black
+));
 
     return Scaffold(
       body: new Stack(fit: StackFit.expand, children: <Widget>[
         SingleChildScrollView(
           child: Container(
               padding: EdgeInsets.all(20.0),
-              child: Column(children: <Widget>[
-                TotalCases(),
-                Title(),
-                SubTitle(),
-                ListItem(),
-                ListItem(),
-                ListItem(),
-                ListItem(),
-              ])),
+              child: Column(children: <Widget>[TotalCases(), ListItem()])),
         )
       ]),
     );

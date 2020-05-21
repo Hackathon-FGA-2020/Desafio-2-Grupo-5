@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mobile/details.dart';
 
 class Donations extends StatefulWidget {
   @override
@@ -168,23 +169,33 @@ class _DonationsState extends State<Donations> {
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 50.0)),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Ver mais detalhes',
-                        textAlign: TextAlign.left,
-                        style: new TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red,
+                 new GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Details()),
+                    );
+                  },
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Ver mais detalhes',
+                          textAlign: TextAlign.left,
+                          style: new TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
                         ),
-                      ),
-                         Padding(
-                        padding: EdgeInsets.only(left: 100.0),
-                        child: Icon(Icons.arrow_forward, color: Colors.red,)
-                      ),
-                    ]),
+                        Padding(
+                            padding: EdgeInsets.only(left: 100.0),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              color: Colors.red,
+                            )),
+                      ]),
+                ),
               ],
             )),
       ],

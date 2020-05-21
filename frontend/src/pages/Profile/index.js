@@ -3,7 +3,7 @@ import './styles.css'
 import { Link, useHistory } from 'react-router-dom'
 import { FiPower, FiTrash2 } from 'react-icons/fi'
 
-import logoImg from '../../assets/logo.svg'
+// import logoImg from '../../assets/logo.svg'
 
 import api from '../../services/api'
 
@@ -11,31 +11,31 @@ export default function Profile() {
   const history = useHistory()
   const [incidents, setIncidents] = useState([])
 
-  const ongName = localStorage.getItem('ongName')
-  const ongId = localStorage.getItem('ongId')
+  const entityName = localStorage.getItem('entityName')
+  const entityId = localStorage.getItem('entityId')
 
   useEffect(() => {
     api.get('profile', {
       headers: {
-        Authorization: ongId,
+        Authorization: entityId,
       }
     }).then(response => {
       setIncidents(response.data.incidents)
     })
-  }, [ongId])
+  }, [entityId])
 
   async function handleDeleteIncident(id) {
     try {
       await api.delete(`incidents/${id}`, {
         headers: {
-          Authorization: ongId,
+          Authorization: entityId,
         }
       })
 
       setIncidents(incidents.filter(incident => incident.id !== id))
 
     } catch (error) {
-      alert('Falha ao deletar caso, tente novamente.')
+      alert('Falha ao deletar doação, tente novamente.')
     }
   }
 
@@ -47,33 +47,24 @@ export default function Profile() {
   return (
     <div className="profile-container">
       <header>
-        <img src={logoImg} alt="Logo Be The Hero" />
-        <span>Bem vinda {ongName}, este é o seu painel de casos</span>
-        <Link className="button" to="/incidents/new">Cadastrar novo caso</Link>
+        {/* <img src={logoImg} alt="Logo Be The Hero" /> */}
+        <span>Bem vinda {entityName}, este é o seu painel de doações.</span>
+        <Link className="button" to="/incidents/new">Cadastrar nova doação</Link>
         <button onClick={handleLogout} type="button">
           <FiPower size={18} color="#E02041" />
         </button>
       </header>
 
-      <h1>Casos cadastrados</h1>
+      <h1>Doações cadastradas</h1>
 
       <ul>
         {incidents.map(incident => (
           <li key={incident.id}>
-            <strong>CASO:</strong>
+            <strong>DOAÇÃO:</strong>
             <p>{incident.title}</p>
 
             <strong>DESCRIÇÃO</strong>
             <p>{incident.description}</p>
-
-            <strong>VALOR:</strong>
-            <p>
-              {
-                Intl.NumberFormat('pt-BR', {
-                  style: 'currency', currency: 'BRL'
-                }).format(incident.value)
-              }
-            </p>
 
             <button onClick={() => handleDeleteIncident(incident.id)} type="button">
               <FiTrash2 size={20} color="red" />

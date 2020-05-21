@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './styles.css'
 
-import logoImg from '../../assets/logo.svg'
+// import logoImg from '../../assets/logo.svg'
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from "react-icons/fi"
 
@@ -29,7 +29,7 @@ export default function Register() {
 
     try {
       const response = await api.post('ongs', data)
-      alert(`Seu ID de acesso: ${response.data.id}`)
+      alert(`Anote seu ID de acesso, você precisará dele para fazer seu login: ${response.data.id}`)
       history.push('/')
     } catch (error) {
       alert(`Erro ao realizar cadastro: ${error.message}`)
@@ -41,9 +41,9 @@ export default function Register() {
     <div className="register-container">
       <div className="content">
         <section>
-          <img src={logoImg} alt="Logo Be The Hero" />
+          {/* <img src={logoImg} alt="Logo Be The Hero" /> */}
           <h1>Cadastro</h1>
-          <p>Faça o seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG.</p>
+          <p>Faça o seu cadastro, entre na plataforma e ajude pessoas a encontrarem suas doações.</p>
           <Link className="back-link" to="/">
             <FiArrowLeft size={20} />
             Voltar para o Login
@@ -52,7 +52,7 @@ export default function Register() {
 
         <form onSubmit={handleRegister}>
           <input
-            placeholder="Nome da ONG"
+            placeholder="Nome da Entidade"
             value={name}
             onChange={e => setName(e.target.value)}
           />

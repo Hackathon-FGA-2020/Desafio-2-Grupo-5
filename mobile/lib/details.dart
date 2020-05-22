@@ -36,7 +36,7 @@ class _DetailsState extends State<Details> {
                   child:
         Icon(
           Icons.arrow_back,
-          color: Colors.red,
+            color: Color(0xFFC5CAE9),
         ),)
       ],
     ));
@@ -51,7 +51,7 @@ class _DetailsState extends State<Details> {
         Container(
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.circular(8.0),
-              color: Colors.white,
+            color:Color(0xFF3F51B5),
             ),
             padding: EdgeInsets.only(top: 30.0, left: 24.0),
             width: displayWidth(context) * 0.85,
@@ -93,7 +93,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                           color: Color(0xFFC5CAE9),
                         ),
                       ),
                       Padding(
@@ -104,7 +104,7 @@ class _DetailsState extends State<Details> {
                           style: new TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                             color: Color(0xFFC5CAE9),
                           ),
                         ),
                       ),
@@ -135,7 +135,7 @@ class _DetailsState extends State<Details> {
                             style: new TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.grey,
+                               color: Color(0xFFC5CAE9),
                             ),
                           ))
                     ]),
@@ -163,7 +163,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey),
+                               color: Color(0xFFC5CAE9)),
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 64.0)),
@@ -176,7 +176,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                            color: Color(0xFF212121)),
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 5.0)),
@@ -189,7 +189,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                             color: Color(0xFF212121)),
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 16.0)),
@@ -202,7 +202,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.normal,
-                            color: Colors.grey),
+                             color: Color(0xFFC5CAE9)),
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 16.0)),
@@ -216,7 +216,7 @@ class _DetailsState extends State<Details> {
                         child: FlatButton(
                              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
                             padding: EdgeInsets.all(20.0),
-                            color: Colors.red,
+                            color: Color(0xFF536DFE),
                             onPressed: () {
                               /*...*/
                             },
@@ -236,7 +236,7 @@ class _DetailsState extends State<Details> {
                         child: FlatButton(
                             padding: EdgeInsets.all(20.0),
                             shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
-                            color: Colors.red,
+                              color: Color(0xFF536DFE),
                             onPressed: () {
                               /*...*/
                             },
@@ -264,6 +264,7 @@ class _DetailsState extends State<Details> {
 ));
 
     return Scaffold(
+         backgroundColor:Color(0xFF303F9F),
       body: new Stack(fit: StackFit.expand, children: <Widget>[
         SingleChildScrollView(
           child: Container(

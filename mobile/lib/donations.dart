@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile/details.dart';
+import 'package:http/http.dart' as http;
 
 class Donations extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _DonationsState extends State<Donations> {
           style: new TextStyle(
             fontSize: 32.0,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ],
@@ -47,7 +48,7 @@ class _DonationsState extends State<Donations> {
           'Total de 43 casos',
           textAlign: TextAlign.right,
           style: new TextStyle(
-              fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.grey),
+              fontSize: 15.0, fontWeight: FontWeight.bold, color: Color(0xFFC5CAE9)),
         ),
       ],
     ));
@@ -65,7 +66,7 @@ class _DonationsState extends State<Donations> {
             style: new TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
-              color: Colors.grey,
+              color:Color(0xFFC5CAE9),
             ),
           ),
         ),
@@ -82,7 +83,7 @@ class _DonationsState extends State<Donations> {
         Container(
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.circular(8.0),
-              color: Colors.white,
+              color:Color(0xFF3F51B5),
             ),
             padding: EdgeInsets.only(top: 30.0, left: 24.0),
             width: displayWidth(context) * 0.85,
@@ -98,7 +99,7 @@ class _DonationsState extends State<Donations> {
                         style: new TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Color(0xFF212121)
                         ),
                       ),
                       Padding(
@@ -109,7 +110,7 @@ class _DonationsState extends State<Donations> {
                           style: new TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color:Color(0xFF212121),
                           ),
                         ),
                       ),
@@ -124,7 +125,7 @@ class _DonationsState extends State<Donations> {
                         style: new TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                          color:Color(0xFFC5CAE9),
                         ),
                       ),
                       Padding(
@@ -135,7 +136,7 @@ class _DonationsState extends State<Donations> {
                           style: new TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                            color: Color(0xFFC5CAE9),
                           ),
                         ),
                       ),
@@ -150,7 +151,7 @@ class _DonationsState extends State<Donations> {
                         style: new TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Color(0xFF212121),
                         ),
                       )
                     ]),
@@ -164,7 +165,7 @@ class _DonationsState extends State<Donations> {
                         style: new TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey
+                          color: Color(0xFFC5CAE9) 
                         ),
                       )
                     ]),
@@ -185,14 +186,14 @@ class _DonationsState extends State<Donations> {
                           style: new TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.red,
+                            color: Color(0xFFC5CAE9),
                           ),
                         ),
                         Padding(
                             padding: EdgeInsets.only(left: 100.0),
                             child: Icon(
                               Icons.arrow_forward,
-                              color: Colors.red,
+                              color: Color(0xFFC5CAE9),
                             )),
                       ]),
                 ),
@@ -207,6 +208,7 @@ class _DonationsState extends State<Donations> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     return Scaffold(
+        backgroundColor:Color(0xFF303F9F),
       body: new Stack(fit: StackFit.expand, children: <Widget>[
         SingleChildScrollView(
           child: Container(

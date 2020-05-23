@@ -1,5 +1,9 @@
 # AJUDA AÍ
- 
+ ![demo](demo.gif)
+![print1](print1.png)
+![print2](print2.png)
+![print3](print3.png)
+
  
 ## Sobre o Projeto
 

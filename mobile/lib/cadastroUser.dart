@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile/details.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile/donations.dart';
+
+import 'entrar.dart';
 
 class CadastroUser extends StatefulWidget {
   @override
@@ -10,6 +14,10 @@ class CadastroUser extends StatefulWidget {
 }
 
 class _CadastroUserState extends State<CadastroUser> {
+  final name = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+
   Size displaySize(BuildContext context) {
     return MediaQuery.of(context).size;
   }
@@ -62,7 +70,6 @@ class _CadastroUserState extends State<CadastroUser> {
       ],
     ));
   }
-  
 
   Widget ListItem() {
     return (Row(
@@ -84,7 +91,7 @@ class _CadastroUserState extends State<CadastroUser> {
                   color: Color(0xFF536DFE),
                   onPressed: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => Donations()));
+                        MaterialPageRoute(builder: (context) => Entrar()));
                   },
                   child: Text(
                     'Criar conta gratuita',
@@ -100,26 +107,40 @@ class _CadastroUserState extends State<CadastroUser> {
               minWidth: 330.0,
               height: 30.0,
               child: FlatButton(
-                  padding: EdgeInsets.all(20.0),
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(8.0)),
-                  color: Color(0xFF303F9F),
-                  onPressed: () {
-                    /*...*/
-                  },
-                  child: Text(
-                    'Já tenho login',
-                    textAlign: TextAlign.left,
-                    style: new TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.white),
-                  )),
+                padding: EdgeInsets.all(20.0),
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0)),
+                color: Color(0xFF303F9F),
+                onPressed: () {
+                  /*...*/
+                },
+                // child: Text(
+                //   'Já tenho login',
+                //   textAlign: TextAlign.left,
+                //   style: new TextStyle(
+                //       fontSize: 20.0,
+                //       fontWeight: FontWeight.normal,
+                //       color: Colors.white),
+                // )
+              ),
             ),
           ],
         )
       ],
     ));
+  }
+
+  Future<String> sendData(BuildContext context) async {
+    http.Response response = await http.post(
+        Uri.encodeFull("http://localhost:3333/users"),
+        body: {"email": email.text, "password": senha.text});
+    var jsonData = response.body;
+    var parsedJson = json.decode(jsonData);
+    var status = parsedJson['status'];
+    if (status == 200) {
+      senha.clear();
+      email.clear();
+    }
   }
 
   @override

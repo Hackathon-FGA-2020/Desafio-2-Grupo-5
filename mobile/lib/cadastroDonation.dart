@@ -32,9 +32,7 @@ class _CadastroDonationState extends State<CadastroDonation> {
         new GestureDetector(
           onTap: () {
             Navigator.pop(
-              context,
-              MaterialPageRoute(builder: (context) => Casos())
-            );
+                context, MaterialPageRoute(builder: (context) => Casos()));
           },
           child: Icon(
             Icons.arrow_back,
@@ -64,7 +62,7 @@ class _CadastroDonationState extends State<CadastroDonation> {
     ));
   }
 
-    Widget Sub() {
+  Widget Sub() {
     return (Row(
       children: <Widget>[
         Padding(padding: EdgeInsets.only(bottom: 100)),
@@ -174,21 +172,20 @@ class _CadastroDonationState extends State<CadastroDonation> {
                       left: 16.0, right: 16.0, bottom: 16.0),
                   child: TextField(
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Descrição'),
+                        border: OutlineInputBorder(), hintText: 'Descrição'),
                     /*   controller: myController, */
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16.0, right: 16.0, bottom: 16.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Valor em reais'),
-                    /*   controller: myController, */
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //       left: 16.0, right: 16.0, bottom: 16.0),
+                //   child: TextField(
+                //     decoration: InputDecoration(
+                //         border: OutlineInputBorder(),
+                //         hintText: 'Valor em reais'),
+                //     /*   controller: myController, */
+                //   ),
+                // ),
                 ListItem(),
               ])),
         )

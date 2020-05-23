@@ -22,24 +22,24 @@ class _ChooseEnterState extends State<ChooseEnter> {
     return displaySize(context).width;
   }
 
-   Widget TotalCases() {
+  Widget TotalCases() {
     return (Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(padding: EdgeInsets.only(top: 100.0)),
-         new GestureDetector(
-                  onTap: () {
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(builder: (context) => Donations()),
-                    );
-                  },
-                  child:
-        Icon(
-          Icons.arrow_back,
+        new GestureDetector(
+          onTap: () {
+            Navigator.pop(
+              context,
+              MaterialPageRoute(builder: (context) => Donations()),
+            );
+          },
+          child: Icon(
+            Icons.arrow_back,
             color: Color(0xFFC5CAE9),
-        ),)
+          ),
+        )
       ],
     ));
   }
@@ -85,7 +85,7 @@ class _ChooseEnterState extends State<ChooseEnter> {
                     /*...*/
                   },
                   child: Text(
-                    'Entidade',
+                    'Organização',
                     textAlign: TextAlign.left,
                     style: new TextStyle(
                         fontSize: 20.0,

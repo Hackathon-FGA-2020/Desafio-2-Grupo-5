@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile/details.dart';
@@ -38,6 +40,14 @@ class _DonationsState extends State<Donations> {
     ));
   }
 
+  Future<String> getData(BuildContext context) async {
+    http.Response response =
+        await http.get(Uri.encodeFull("http://localhost:3333/ads"));
+    var jsonData = response.body;
+    var parsedJson = json.decode(jsonData);
+    var status = parsedJson['status'];
+  }
+
   Widget TotalCases() {
     return (Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +58,9 @@ class _DonationsState extends State<Donations> {
           'Total de 43 casos',
           textAlign: TextAlign.right,
           style: new TextStyle(
-              fontSize: 15.0, fontWeight: FontWeight.bold, color: Color(0xFFC5CAE9)),
+              fontSize: 15.0,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFFC5CAE9)),
         ),
       ],
     ));
@@ -61,12 +73,12 @@ class _DonationsState extends State<Donations> {
         Container(
           width: displayWidth(context) * 0.8,
           child: Text(
-            'Escolha um dos casos abaixo e salve o dia.',
+            'Escolha uma dos produtos abaixo disponiveis para doação',
             textAlign: TextAlign.left,
             style: new TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
-              color:Color(0xFFC5CAE9),
+              color: Color(0xFFC5CAE9),
             ),
           ),
         ),
@@ -83,7 +95,7 @@ class _DonationsState extends State<Donations> {
         Container(
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.circular(8.0),
-              color:Color(0xFF3F51B5),
+              color: Color(0xFF3F51B5),
             ),
             padding: EdgeInsets.only(top: 30.0, left: 24.0),
             width: displayWidth(context) * 0.85,
@@ -97,10 +109,9 @@ class _DonationsState extends State<Donations> {
                         'Caso: ',
                         textAlign: TextAlign.left,
                         style: new TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF212121)
-                        ),
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF212121)),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 143.0),
@@ -110,7 +121,7 @@ class _DonationsState extends State<Donations> {
                           style: new TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
-                            color:Color(0xFF212121),
+                            color: Color(0xFF212121),
                           ),
                         ),
                       ),
@@ -125,7 +136,7 @@ class _DonationsState extends State<Donations> {
                         style: new TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color:Color(0xFFC5CAE9),
+                          color: Color(0xFFC5CAE9),
                         ),
                       ),
                       Padding(
@@ -142,35 +153,21 @@ class _DonationsState extends State<Donations> {
                       ),
                     ]),
                 Padding(padding: EdgeInsets.only(top: 24.0)),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Valor',
-                        textAlign: TextAlign.left,
-                        style: new TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF212121),
-                        ),
-                      )
-                    ]),
-                Padding(padding: EdgeInsets.only(top: 10.0)),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'RS 120,00 reais',
-                        textAlign: TextAlign.left,
-                        style: new TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFC5CAE9) 
-                        ),
-                      )
-                    ]),
+                // Row(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: <Widget>[
+                //       Text(
+                //         'Valor',
+                //         textAlign: TextAlign.left,
+                //         style: new TextStyle(
+                //           fontSize: 14.0,
+                //           fontWeight: FontWeight.bold,
+                //           color: Color(0xFF212121),
+                //         ),
+                //       )
+                //     ]),
                 Padding(padding: EdgeInsets.only(top: 50.0)),
-                 new GestureDetector(
+                new GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
@@ -208,7 +205,7 @@ class _DonationsState extends State<Donations> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     return Scaffold(
-        backgroundColor:Color(0xFF303F9F),
+      backgroundColor: Color(0xFF303F9F),
       body: new Stack(fit: StackFit.expand, children: <Widget>[
         SingleChildScrollView(
           child: Container(

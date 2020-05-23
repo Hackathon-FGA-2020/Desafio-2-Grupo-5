@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile/casos.dart';
@@ -5,12 +7,19 @@ import 'package:mobile/details.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile/donations.dart';
 
+import 'entrar.dart';
+
 class CadastroEntidade extends StatefulWidget {
   @override
   _CadastroEntidadeState createState() => new _CadastroEntidadeState();
 }
 
 class _CadastroEntidadeState extends State<CadastroEntidade> {
+  final name = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  final cnpj = TextEditingController();
+
   Size displaySize(BuildContext context) {
     return MediaQuery.of(context).size;
   }
@@ -52,7 +61,7 @@ class _CadastroEntidadeState extends State<CadastroEntidade> {
         Container(
           width: displayWidth(context) * 0.8,
           child: Text(
-            'Cadastre sua entidade',
+            'Cadastre sua Organização',
             textAlign: TextAlign.left,
             style: new TextStyle(
                 fontSize: 26.0,
@@ -83,8 +92,10 @@ class _CadastroEntidadeState extends State<CadastroEntidade> {
                   padding: EdgeInsets.all(20.0),
                   color: Color(0xFF536DFE),
                   onPressed: () {
+                    sendData(context);
+
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => Casos()));
+                        MaterialPageRoute(builder: (context) => Entrar()));
                   },
                   child: Text(
                     'Criar conta gratuita',
@@ -100,26 +111,38 @@ class _CadastroEntidadeState extends State<CadastroEntidade> {
               minWidth: 330.0,
               height: 30.0,
               child: FlatButton(
-                  padding: EdgeInsets.all(20.0),
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(8.0)),
-                  color: Color(0xFF303F9F),
-                  onPressed: () {
-                    /*...*/
-                  },
-                  child: Text(
-                    'Já tenho login',
-                    textAlign: TextAlign.left,
-                    style: new TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.white),
-                  )),
+                padding: EdgeInsets.all(20.0),
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0)),
+                color: Color(0xFF303F9F),
+                onPressed: () {},
+                // child: Text(
+                //   'Já tenho login',
+                //   textAlign: TextAlign.left,
+                //   style: new TextStyle(
+                //       fontSize: 20.0,
+                //       fontWeight: FontWeight.normal,
+                //       color: Colors.white),
+                // )
+              ),
             ),
           ],
         )
       ],
     ));
+  }
+
+  Future<String> sendData(BuildContext context) async {
+    http.Response response =
+        await http.post(Uri.encodeFull("http://localhost:3333/users"), body: {
+      "email": email.text,
+      "password": password.text,
+      "name": name.text,
+      "cnpj": cnpj.text
+    });
+    var jsonData = response.body;
+    var parsedJson = json.decode(jsonData);
+    var status = parsedJson['status'];
   }
 
   @override
@@ -139,15 +162,14 @@ class _CadastroEntidadeState extends State<CadastroEntidade> {
                   padding: const EdgeInsets.only(
                       top: 30.0, left: 16.0, right: 16.0, bottom: 16.0),
                   child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.people),
-                        border: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 0.0),
-                        ),
-                        hintText: 'Nome completo'),
-                    /*   controller: myController, */
-                  ),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.people),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.grey, width: 0.0),
+                          ),
+                          hintText: 'Nome completo'),
+                      controller: name),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -157,30 +179,28 @@ class _CadastroEntidadeState extends State<CadastroEntidade> {
                         prefixIcon: Icon(Icons.email),
                         border: OutlineInputBorder(),
                         hintText: 'E-mail'),
-                    /*   controller: myController, */
+                    controller: email,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 16.0, right: 16.0, bottom: 16.0),
                   child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
-                        border: OutlineInputBorder(),
-                        hintText: 'Senha'),
-                    /*   controller: myController, */
-                  ),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
+                          border: OutlineInputBorder(),
+                          hintText: 'Senha'),
+                      controller: password),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 16.0, right: 16.0, bottom: 16.0),
                   child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.dock),
-                        border: OutlineInputBorder(),
-                        hintText: 'CNPJ'),
-                    /*   controller: myController, */
-                  ),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.dock),
+                          border: OutlineInputBorder(),
+                          hintText: 'CNPJ'),
+                      controller: cnpj),
                 ),
                 ListItem(),
               ])),

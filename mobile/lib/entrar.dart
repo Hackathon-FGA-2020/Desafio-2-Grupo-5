@@ -7,6 +7,9 @@ import 'package:mobile/details.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile/donations.dart';
 
+import 'donations.dart';
+import 'donations.dart';
+
 class Entrar extends StatefulWidget {
   @override
   _EntrarState createState() => new _EntrarState();
@@ -36,14 +39,15 @@ class _EntrarState extends State<Entrar> {
     var jsonData = response.body;
     var parsedJson = json.decode(jsonData);
     var status = parsedJson['status'];
-    print(response.body);
-    if (status == 200) {
-      senha.clear();
-      email.clear();
-
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Choose()));
-    } else {}
+    // if (status == 200) {
+    //   Navigator.pushReplacement(
+    //       context, MaterialPageRoute(builder: (context) => Choose()));
+    // } else {
+    //   Navigator.pushReplacement(
+    //       context, MaterialPageRoute(builder: (context) => Choose()));
+    // }
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Choose()));
   }
 
   Widget TotalCases() {
@@ -75,8 +79,8 @@ class _EntrarState extends State<Entrar> {
         Container(
           width: displayWidth(context) * 0.8,
           child: Text(
-            'Bem vindo de volta!',
-            textAlign: TextAlign.left,
+            'Faça seu login.',
+            textAlign: TextAlign.center,
             style: new TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
@@ -106,7 +110,9 @@ class _EntrarState extends State<Entrar> {
                   padding: EdgeInsets.all(20.0),
                   color: Color(0xFF536DFE),
                   onPressed: () {
-                 getData(context)
+                    getData(context);
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => Donations()));
                   },
                   child: Text(
                     'Entrar',
@@ -158,30 +164,29 @@ class _EntrarState extends State<Entrar> {
               child: Column(children: <Widget>[
                 TotalCases(),
                 SubTitle(),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 30.0, left: 16.0, right: 16.0, bottom: 16.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.people),
-                        border: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 0.0),
-                        ),
-                        hintText: 'Nome completo'),
-                    /*   controller: myController, */
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //       top: 30.0, left: 16.0, right: 16.0, bottom: 16.0),
+                //   child: TextField(
+                //     decoration: InputDecoration(
+                //         prefixIcon: Icon(Icons.people),
+                //         border: OutlineInputBorder(
+                //           borderSide:
+                //               const BorderSide(color: Colors.grey, width: 0.0),
+                //         )
+                //         hintText: 'Nome completo'),
+                //     /*   controller: myController, */
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 16.0, right: 16.0, bottom: 16.0),
                   child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email),
-                        border: OutlineInputBorder(),
-                        hintText: 'E-mail'),
-                    /*   controller: myController, */
-                  ),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          border: OutlineInputBorder(),
+                          hintText: 'E-mail'),
+                      controller: email),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -191,7 +196,7 @@ class _EntrarState extends State<Entrar> {
                         prefixIcon: Icon(Icons.lock),
                         border: OutlineInputBorder(),
                         hintText: 'Senha'),
-                    /*   controller: myController, */
+                    controller: senha,
                   ),
                 ),
                 ListItem(),

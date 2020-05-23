@@ -26,18 +26,18 @@ class _DetailsState extends State<Details> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(padding: EdgeInsets.only(top: 100.0)),
-         new GestureDetector(
-                  onTap: () {
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(builder: (context) => Donations()),
-                    );
-                  },
-                  child:
-        Icon(
-          Icons.arrow_back,
+        new GestureDetector(
+          onTap: () {
+            Navigator.pop(
+              context,
+              MaterialPageRoute(builder: (context) => Donations()),
+            );
+          },
+          child: Icon(
+            Icons.arrow_back,
             color: Color(0xFFC5CAE9),
-        ),)
+          ),
+        )
       ],
     ));
   }
@@ -51,7 +51,7 @@ class _DetailsState extends State<Details> {
         Container(
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.circular(8.0),
-            color:Color(0xFF3F51B5),
+              color: Color(0xFF3F51B5),
             ),
             padding: EdgeInsets.only(top: 30.0, left: 24.0),
             width: displayWidth(context) * 0.85,
@@ -93,7 +93,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                           color: Color(0xFFC5CAE9),
+                          color: Color(0xFFC5CAE9),
                         ),
                       ),
                       Padding(
@@ -104,7 +104,7 @@ class _DetailsState extends State<Details> {
                           style: new TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
-                             color: Color(0xFFC5CAE9),
+                            color: Color(0xFFC5CAE9),
                           ),
                         ),
                       ),
@@ -135,24 +135,24 @@ class _DetailsState extends State<Details> {
                             style: new TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.bold,
-                               color: Color(0xFFC5CAE9),
+                              color: Color(0xFFC5CAE9),
                             ),
                           ))
                     ]),
                 Padding(padding: EdgeInsets.only(top: 24.0)),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Valor',
-                        textAlign: TextAlign.left,
-                        style: new TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      )
-                    ]),
+                // Row(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: <Widget>[
+                //       Text(
+                //         'Valor',
+                //         textAlign: TextAlign.left,
+                //         style: new TextStyle(
+                //           fontSize: 14.0,
+                //           fontWeight: FontWeight.bold,
+                //           color: Colors.black,
+                //         ),
+                //       )
+                //     ]),
                 Padding(padding: EdgeInsets.only(top: 10.0)),
                 Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,7 +163,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
-                               color: Color(0xFFC5CAE9)),
+                            color: Color(0xFFC5CAE9)),
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 64.0)),
@@ -189,7 +189,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                             color: Color(0xFF212121)),
+                            color: Color(0xFF212121)),
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 16.0)),
@@ -202,7 +202,7 @@ class _DetailsState extends State<Details> {
                         style: new TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.normal,
-                             color: Color(0xFFC5CAE9)),
+                            color: Color(0xFFC5CAE9)),
                       )
                     ]),
                 Padding(padding: EdgeInsets.only(top: 16.0)),
@@ -214,7 +214,8 @@ class _DetailsState extends State<Details> {
                         minWidth: 130.0,
                         height: 30.0,
                         child: FlatButton(
-                             shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(8.0)),
                             padding: EdgeInsets.all(20.0),
                             color: Color(0xFF536DFE),
                             onPressed: () {
@@ -235,8 +236,9 @@ class _DetailsState extends State<Details> {
                         height: 30.0,
                         child: FlatButton(
                             padding: EdgeInsets.all(20.0),
-                            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(8.0)),
-                              color: Color(0xFF536DFE),
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(8.0)),
+                            color: Color(0xFF536DFE),
                             onPressed: () {
                               /*...*/
                             },
@@ -259,12 +261,11 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-  statusBarColor: Colors.black
-));
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.black));
 
     return Scaffold(
-         backgroundColor:Color(0xFF303F9F),
+      backgroundColor: Color(0xFF303F9F),
       body: new Stack(fit: StackFit.expand, children: <Widget>[
         SingleChildScrollView(
           child: Container(

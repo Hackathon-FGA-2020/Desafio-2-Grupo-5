@@ -54,7 +54,7 @@ class _ChooseState extends State<Choose> {
         Container(
           width: displayWidth(context) * 0.8,
           child: Text(
-            'Escolha seu cadastro',
+            'Escolha seu tipo de cadastro',
             textAlign: TextAlign.left,
             style: new TextStyle(
                 fontSize: 28.0,
@@ -92,7 +92,7 @@ class _ChooseState extends State<Choose> {
                     );
                   },
                   child: Text(
-                    'Entidade',
+                    'Organização',
                     textAlign: TextAlign.left,
                     style: new TextStyle(
                         fontSize: 20.0,

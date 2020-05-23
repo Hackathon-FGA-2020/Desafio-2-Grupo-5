@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile/cadastroDonation.dart';
@@ -20,6 +22,14 @@ class _CasosState extends State<Casos> {
 
   double displayWidth(BuildContext context) {
     return displaySize(context).width;
+  }
+
+  Future<String> getData(BuildContext context) async {
+    http.Response response =
+        await http.get(Uri.encodeFull("http://localhost:3333/ads"));
+    var jsonData = response.body;
+    var parsedJson = json.decode(jsonData);
+    var status = parsedJson['status'];
   }
 
   Widget Title() {
@@ -148,33 +158,20 @@ class _CasosState extends State<Casos> {
                             ),
                           ))
                     ]),
-                Padding(padding: EdgeInsets.only(top: 24.0)),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Valor',
-                        textAlign: TextAlign.left,
-                        style: new TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      )
-                    ]),
-                Padding(padding: EdgeInsets.only(top: 10.0)),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'RS 120,00 reais',
-                        textAlign: TextAlign.left,
-                        style: new TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFC5CAE9)),
-                      )
-                    ]),
+                // Padding(padding: EdgeInsets.only(top: 24.0)),
+                // Row(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: <Widget>[
+                //       Text(
+                //         'Valor',
+                //         textAlign: TextAlign.left,
+                //         style: new TextStyle(
+                //           fontSize: 14.0,
+                //           fontWeight: FontWeight.bold,
+                //           color: Colors.black,
+                //         ),
+                //       )
+                //     ]),
               ],
             )),
       ],
@@ -190,8 +187,8 @@ class _CasosState extends State<Casos> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFFE02041),
         onPressed: () {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => CadastroDonation()));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => CadastroDonation()));
         },
         child: Icon(Icons.add),
       ),

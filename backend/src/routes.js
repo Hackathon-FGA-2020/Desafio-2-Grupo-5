@@ -1,24 +1,41 @@
-const express = require('express')
+import { Router } from 'express';
+import multer from 'multer';
+import multerConfig from './config/multer';
 
-const OngController = require('./controller/OngController')
-const IncidentsController = require('./controller/IncidentsController')
-const ProfileController = require('./controller/ProfileController')
-const SessionController = require('./controller/SessionController')
+import AdvertisingController from './app/controllers/AdvertisingController';
+import ReceiverController from './app/controllers/ReceiverController';
+import SessionController from './app/controllers/SessionController';
+import UserController from './app/controllers/UserController';
+import FileController from './app/controllers/FileController';
 
-const routes = express.Router()
 
-// login
-routes.post('/sessions', SessionController.create)
+import authMiddleware from './app/middlewares/auth';
 
-// rotas de ONGs
-routes.get('/ongs', OngController.index);
-routes.post('/ongs', OngController.create);
+const routes = new Router();
+const upload = multer(multerConfig);
 
-routes.get('/profile', ProfileController.index);
+// user
+routes.post('/users', upload.single('file'), UserController.store);
 
-//rotas incidents
-routes.get('/incidents', IncidentsController.index);
-routes.post('/incidents', IncidentsController.create);
-routes.delete('/incidents/:id', IncidentsController.delete);
+// receiver
+routes.post('/receivers', upload.single('file'), ReceiverController.store);
 
-module.exports = routes;
+// session
+routes.post('/login', SessionController.store);
+
+// files
+routes.post('/images', upload.single('file'), FileController.store);
+
+routes.get('/ads', AdvertisingController.index);
+routes.post('/ads', upload.single('file'), AdvertisingController.store);
+
+/*all routes below can only be
+accessed if the user is logged in*/
+// routes.use(authMiddleware);
+
+routes.put('/users', UserController.update);
+
+// ads
+routes.delete('/ads/:id', AdvertisingController.delete);
+
+export default routes;

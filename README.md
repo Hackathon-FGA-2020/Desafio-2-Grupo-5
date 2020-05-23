@@ -1,13 +1,9 @@
-# Desafio-2-Grupo-5
-
-# goNodeJS
+# AJUDA AÍ
+ 
  
 ## Sobre o Projeto
 
-<p>Este repositório serve para estudar e desenvolver pequenas aplicações utilizando a tecnologia NodeJS.</p>
-<p>Na branch module01-nodeJS há os primeiros passos na apredizagem do nodeJS.</p>
-<p>Já na branch module02-goBaber há uma aplicação na qual o usuário pode cadastrar-se como um usuário comum ou como
-um provedor de serviço(barbeiro), acessar a página com uma lista de barbeiros e agendar um horário.</p>
+<p>O <strong>Ajuda aí</strong> foi desenvolvido com o objetivo de juntar pessoas que querem ajudar com pessoas que precisam de doações!</p>
 
 
 ## Techs :rocket:
